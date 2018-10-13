@@ -77,6 +77,7 @@ def extract_labels(filename, one_hot=False):
     if one_hot:
       return dense_to_one_hot(labels)
     return labels
+
 class DataSet(object):
   def __init__(self, images, labels, fake_data=False, one_hot=False,
                dtype=tf.float32):

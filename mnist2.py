@@ -79,16 +79,15 @@ sess.run(tf.initialize_all_variables())
 #call session to train
 
 for i in range(20000):
-  batch = mnist.train.next_batch(50)
+  batch = mnist.train.next_batch(100)
   if i%100 == 0:
     train_accuracy = accuracy.eval(feed_dict={ x_input:batch[0], y_target: batch[1], keep_prob: 1.0})
     print "step %d, training accuracy %g"%(i, train_accuracy)
-    if i==200:
+    if i==0:
         print h_conv1;
         print h_pool1;
         print h_conv2;
         print h_pool2;
-
   train_step.run(feed_dict={x_input: batch[0], y_target: batch[1], keep_prob: 0.5})
 
 print "test accuracy %g"%accuracy.eval(feed_dict={x_input: mnist.test.images, y_target: mnist.test.labels, keep_prob: 1.0})
